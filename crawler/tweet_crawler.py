@@ -11,7 +11,8 @@ consumer_secret = "0Kf8DNw8HklsHnINLGOPRryZMo3EvSCJvIL0Edh9JKS6ShCfx1"
 def write_file(tweet):
     today = date.today()
     current_date = today.strftime("%Y_%m_%d")
-    path = "../raw_data/" + "election_" + current_date + ".txt"
+    path = "../data/downloading_data/" + "election_" + current_date + ".txt"
+
     with open(path, 'a') as f:
         f.write(tweet.text)
         f.write('\n')
@@ -36,7 +37,6 @@ def get_filter_words(path):
     with open(path, "r") as file:
         csv_reader = csv.reader(file)
         filter_words = [word[0] for word in csv_reader]
-
 
     return filter_words
 
