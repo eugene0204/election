@@ -1,3 +1,4 @@
+from tqdm import tqdm
 import json
 import os
 import re
@@ -7,7 +8,8 @@ class JsonReader:
         files = os.listdir(path)
 
         sentences = []
-        for file in files:
+        for file in tqdm(files, desc="reading json file"):
+            print(f"reading file: {file}")
             with open(os.path.join(path, file), 'r') as f:
                 for tweet in f:
                     try:

@@ -12,6 +12,7 @@ class SoyNlpTokenizer:
         return self.noun_extractor.train_extract(sents)
 
     def read_noun_dict(self, path):
+        print("reading noun file")
         with open(path, 'r') as f:
             reader = csv.reader(f)
             nouns = [noun for noun in reader]
