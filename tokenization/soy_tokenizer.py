@@ -15,7 +15,7 @@ class SoyNlpTokenizer:
         print("reading noun file")
         with open(path, 'r') as f:
             reader = csv.reader(f)
-            nouns = [noun for noun in reader]
+            nouns = [noun[0] for noun in reader]
 
         return nouns
 
@@ -30,13 +30,12 @@ def write_file(path, sents):
 
 
 if __name__ == "__main__":
-    path = "../data/raw_data/"
+    path = "./data/raw_data/"
     nouns_path = "./data/nouns/nouns.csv"
-    # data_reader = TextReader()
-    # sents = data_reader.read_data(path)
 
-    json_reader = JsonReader()
-    sents = json_reader.read_file(path)
+    data_reader = TextReader()
+    sents = data_reader.read_data(path)
+
 
     soy = SoyNlpTokenizer()
 

@@ -1,6 +1,5 @@
 from gensim.models import Word2Vec
-from reader.large_file_reader import BigSentences
-import os
+from reader.gen_reader import BigSentences
 import logging
 import multiprocessing
 logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', level=logging.INFO)
@@ -10,8 +9,11 @@ cpu_count = multiprocessing.cpu_count()
 train_data_path = "../data/ready_for_train/"
 sentences = BigSentences(train_data_path)
 
+for sent in sentences:
+    pass
+
 model_path = "./models/"
-model_name = "2022_election_w2v_model"
+model_name = "2022_election_w2v_model_3"
 
 model = Word2Vec(sentences=sentences,
                  vector_size=300,

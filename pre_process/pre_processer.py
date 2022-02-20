@@ -17,18 +17,14 @@ def write_file(sentences: list, name):
 class PreProcesser:
     def get_noun_sentences(self, sentences, nouns) -> list:
         noun_sentences = []
-        words = []
 
+        nouns_ = set(nouns)
         for sent in tqdm(sentences, desc="making noun sentences"):
-            split_words = sent.split()
-            words.clear()
-            for word in split_words:
-                if [word] in nouns:
-                    words.append(word)
+            sent_ = set(sent.split())
+            commons = sent_ & nouns_
 
-            join_words = " ".join(words)
-            if len(words) > 1:
-                noun_sentences.append(join_words)
+            if commons and len(commons) > 1:
+                noun_sentences.append(" ".join(commons))
 
         noun_sentences = list(set(noun_sentences))
 
@@ -39,8 +35,8 @@ if __name__ == "__main__":
     raw_path = "../data/raw_data/"
     nouns_path = "../tokenization/data/nouns/nouns.csv"
 
-    json_reader = JsonReader()
-    sentences = json_reader.read_file(raw_path)
+    data_reader = TextReader()
+    sentences = data_reader.read_data(raw_path)
 
     tokenizer = SoyNlpTokenizer()
     nouns = tokenizer.read_noun_dict(nouns_path)
@@ -48,5 +44,5 @@ if __name__ == "__main__":
     pre = PreProcesser()
     noun_sentences = pre.get_noun_sentences(sentences, nouns)
 
-    file_name = "0131_to_0206.csv"
+    file_name = "0214_to_0220.csv"
     write_file(noun_sentences, file_name)

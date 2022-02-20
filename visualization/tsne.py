@@ -8,7 +8,7 @@ from collections import namedtuple
 
 plt.rc('font', family='NanumBarunGothic')
 def show_tsne(name, vectors_show, vocab_show):
-    tsne = TSNE(n_components=2, perplexity=30)
+    tsne = TSNE(n_components=2, perplexity=35)
     X = tsne.fit_transform(vectors_show)
     df = pd.DataFrame(X, index=vocab_show, columns=['x', 'y'])
     fig = plt.figure()
@@ -19,12 +19,12 @@ def show_tsne(name, vectors_show, vocab_show):
     for word, pos in df.iterrows():
         ax.annotate(word, pos, fontsize=12)
 
-    plt.xlabel(name)
+    plt.xlabel(name, fontsize=20)
     plt.show()
 
 
 if __name__ == "__main__":
-    model_name = "../model/models/2022_election_w2v_model"
+    model_name = "../model/models/2022_election_w2v_model_2"
     model = KeyedVectors.load(model_name, mmap='r')
 
     test_list = ('이재명', '윤석열', '안철수', '심상정')

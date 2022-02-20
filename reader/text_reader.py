@@ -1,24 +1,21 @@
 import os
 import re
+from tqdm import tqdm
 
 
 class TextReader:
     def read_data(self, path):
         sentences = []
-        words = []
         files = os.listdir(path)
-        for file in files:
+        for file in tqdm(files, desc="text reader"):
             with open(os.path.join(path, file), 'r') as f:
-                words.clear()
                 for sent in f:
                     korean = re.findall(u'[\uAC00-\uD7A3]+', sent)
                     korean = ' '.join(korean)
                     if len(korean) > 1:
-                        words.append(korean)
+                        sentences.append(korean)
 
-                words = list(set(words))
-                file = file.split(".")
-                sentences.append((words, file[0]))
+        sentences = list(set(sentences))
 
         return sentences
 

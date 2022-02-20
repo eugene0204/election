@@ -1,4 +1,4 @@
-from reader.large_file_reader import BigSentences
+from reader.gen_reader import BigSentences
 
 class Counter:
 
@@ -32,7 +32,7 @@ if __name__ == "__main__":
     path = "../data/ready_for_train"
     sentences = BigSentences(path)
 
-    counter =  Counter()
+    counter = Counter()
     counter.count(sentences)
 
 
