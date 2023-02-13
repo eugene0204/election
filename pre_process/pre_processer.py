@@ -44,5 +44,5 @@ if __name__ == "__main__":
     pre = PreProcesser()
     noun_sentences = pre.get_noun_sentences(sentences, nouns)
 
-    file_name = "0214_to_0220.csv"
+    file_name = "0302_to_0308.csv"
     write_file(noun_sentences, file_name)

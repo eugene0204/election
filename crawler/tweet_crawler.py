@@ -11,7 +11,7 @@ consumer_secret = "0Kf8DNw8HklsHnINLGOPRryZMo3EvSCJvIL0Edh9JKS6ShCfx1"
 def write_file(tweet):
     today = date.today()
     current_date = today.strftime("%Y_%m_%d")
-    path = "../data/downloading_data/" + "election_" + current_date + ".txt"
+    path = "../data/downloading_data/" + "sub_twitter_" + current_date + ".txt"
 
     with open(path, 'a') as f:
         f.write(tweet.text)
@@ -20,6 +20,7 @@ def write_file(tweet):
 
 class MyStreamListener(tweepy.Stream):
     def on_status(self, tweet):
+        print(tweet.text)
         write_file(tweet)
 
     def on_exception(self, exception):

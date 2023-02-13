@@ -1,7 +1,7 @@
 import os
 
 
-class BigSentences:
+class BigCorpora:
     def __init__(self, path):
         self.path = path
 
@@ -15,7 +15,7 @@ class BigSentences:
 
 if __name__ == "__main__":
     path = "../data/ready_for_train"
-    sentences = BigSentences(path)
+    sentences = BigCorpora(path)
 
     for sent in sentences:
         pass

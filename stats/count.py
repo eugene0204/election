@@ -1,4 +1,4 @@
-from reader.gen_reader import BigSentences
+from reader.gen_reader import BigCorpora
 
 class Counter:
 
@@ -15,8 +15,10 @@ class Counter:
                 num_lee += 1
             if yoon in sent:
                 num_yoon += 1
-            if ahn in sent:
-                num_ahn += 1
+
+            # if ahn in sent:
+            #     num_ahn += 1
+
             if shim in sent:
                 num_shim += 1
 
@@ -30,7 +32,7 @@ class Counter:
 
 if __name__ == "__main__":
     path = "../data/ready_for_train"
-    sentences = BigSentences(path)
+    sentences = BigCorpora(path)
 
     counter = Counter()
     counter.count(sentences)

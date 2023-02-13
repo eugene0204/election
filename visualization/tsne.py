@@ -24,7 +24,7 @@ def show_tsne(name, vectors_show, vocab_show):
 
 
 if __name__ == "__main__":
-    model_name = "../model/models/2022_election_w2v_model_2"
+    model_name = "../model/models/2022_election_w2v_model_4"
     model = KeyedVectors.load(model_name, mmap='r')
 
     test_list = ('이재명', '윤석열', '안철수', '심상정')

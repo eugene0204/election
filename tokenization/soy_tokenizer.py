@@ -30,18 +30,16 @@ def write_file(path, sents):
 
 
 if __name__ == "__main__":
-    path = "./data/raw_data/"
+    path = "../data/raw_data/"
     nouns_path = "./data/nouns/nouns.csv"
 
     data_reader = TextReader()
     sents = data_reader.read_data(path)
 
-
     soy = SoyNlpTokenizer()
 
     nouns = soy.train_extract(sents)
     write_file(nouns_path, nouns)
-    print(nouns["이재명"])
 
     # test_list = ['이재명', '윤석열', '안철수', '심상정', '김건희']
     # write_file(test_list, nouns_path, noun_dict)
